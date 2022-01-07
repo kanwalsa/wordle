@@ -1,4 +1,4 @@
-vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+# word list taken from https://eslforums.com/5-letter-words/
 
 import os
 try :

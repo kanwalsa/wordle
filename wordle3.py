@@ -1,5 +1,3 @@
-vowels = ['a', 'e', 'i', 'o', 'u', 'y']
-
 import os
 try :
     dir = '/Users/kanwal/Desktop/Mason/'
@@ -28,7 +26,6 @@ except FileNotFoundError:
 except Exception as e :
     print(e)
 
-
 letterlist = list(lettercount.keys())
 lettersum = sum(list(lettercount.values()))
 
@@ -41,6 +38,17 @@ print('words analyzed:', wordcount)
 for word in list(worddict.keys()) :
     for letter in word:
         worddict[word] = worddict[word] + lettercount[letter]
+
+# now remove words with reused letters:
+for word in list(worddict.keys()):
+    curlet = []
+    for letter in word:
+        if letter in curlet:
+            worddict.pop(word)
+            break
+        curlet.append(letter)
+
+print('words analyzed w/o duplicate letters:', len(list(worddict.keys())))
 
 keymax = max(worddict, key= lambda x: worddict[x])
 print(keymax, ':',  worddict[keymax])
